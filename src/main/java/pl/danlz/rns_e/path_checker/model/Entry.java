@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 public class Entry implements Comparable<Entry> {
 
     private final static String SONG_EXTENSION = "mp3";
+
     private final static String PLAYLIST_EXTENSION = "m3u";
 
     /**

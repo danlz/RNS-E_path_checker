@@ -139,20 +139,20 @@ public class Checker {
         String execute(Entry entry);
     }
 
-    private static class Checks {
+    static class Checks {
 
         private final static int FILENAME_LENGTH_LIMIT = 64;
         private final static Pattern ALLOWED_CHARACTERS_PATTERN = Pattern.compile("^[0-9a-zA-Z _\\-.,&'()!\\[\\]+#]+$");
 
 
-        private static String nameLength(Entry entry) {
+        static String nameLength(Entry entry) {
             if (entry.getNameLength() > FILENAME_LENGTH_LIMIT) {
                 return "Entry name has " + entry.getNameLength() + " characters";
             }
             return null;
         }
 
-        private static String characters(Entry entry) {
+        static String characters(Entry entry) {
             if (!ALLOWED_CHARACTERS_PATTERN.matcher(entry.getName()).matches()) {
                 // TODO should we check path elements?
                 return "Invalid characters in name";
@@ -168,7 +168,7 @@ public class Checker {
          * </ol>
          *
          */
-        private static String albumName(Entry entry) {
+        static String albumName(Entry entry) {
             if (entry.isDirectory() && !entry.isAlbumName() && !entry.isMixAlbumName()) {
                 return "Invalid album name";
             }
@@ -178,7 +178,7 @@ public class Checker {
         /**
          * An album may contain only songs or playlists.
          */
-        private static String nameInAlbum(Entry entry) {
+        static String nameInAlbum(Entry entry) {
             if (entry.isFile()) {
                 if (entry.isSongFile()) {
                     if (entry.isInAlbum() && !entry.isSongName()) {
