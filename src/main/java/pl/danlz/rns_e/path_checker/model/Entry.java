@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 /**
  * Entry in the file system.
  */
-public class Entry {
+public class Entry implements Comparable<Entry> {
 
     private final static String SONG_EXTENSION = "mp3";
     private final static String PLAYLIST_EXTENSION = "m3u";
@@ -115,4 +115,8 @@ public class Entry {
         return path.getAbsolutePath();
     }
 
+    @Override
+    public int compareTo(Entry o) {
+        return path.compareTo(o.path);
+    }
 }

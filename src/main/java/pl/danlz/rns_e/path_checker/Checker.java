@@ -5,6 +5,7 @@ import pl.danlz.rns_e.path_checker.model.Entry;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -27,6 +28,7 @@ public class Checker {
         List<File> toVisit = new ArrayList<>();
         toVisit.add(rootPath);
         visitDirectory(toVisit);
+        Collections.sort(entries);
     }
 
     private void visitDirectory(List<File> toVisit) {
@@ -71,13 +73,14 @@ public class Checker {
         File rootBasePath = rootPath.toPath().getRoot().toFile();
         for (Entry entry: entries) {
             if (entry.isFile() && entry.isPlaylistFile()) {
+                File relativeBasePath = entry.getPath().getParentFile();
                 List<String> playListItems = entry.getPlaylistItems();
                 for (String playlistItem : playListItems) {
                     File playlistItemFile;
                     if (playlistItem.startsWith("/")) {
                         playlistItemFile = new File(rootBasePath, playlistItem);
                     } else {
-                        playlistItemFile = new File(entry.getPath(), playlistItem);
+                        playlistItemFile = new File(relativeBasePath, playlistItem);
                     }
 
                     // TODO if path in playlist contains a special character like ł it won't be displayed
