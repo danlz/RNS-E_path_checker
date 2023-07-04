@@ -14,17 +14,25 @@ public class CheckerTest {
     private final File basePath = new File(baseUrl.getPath()).getParentFile();
 
     @Test
-    void buildEntryList() {
+    void basicCheck() {
         Checker checker = new Checker(basePath);
         checker.buildEntryList();
+        checker.checkNameLength();
 
         Assertions.assertEquals(17, checker.entries.size());
         Entry entry1 = checker.entries.get(0);
         Assertions.assertEquals("123456789012345678901234567890123456789012345678901234567890Too_long", entry1.getName());
+        List<String> violations1 = entry1.getViolations();
+        Assertions.assertEquals(1, violations1.size());
+        Assertions.assertEquals("Entry name has 68 characters", violations1.get(0));
         Entry entry2 = checker.entries.get(1);
         Assertions.assertEquals("album", entry2.getName());
+        List<String> violations2 = entry2.getViolations();
+        Assertions.assertEquals(0, violations2.size());
         Entry entry3 = checker.entries.get(2);
         Assertions.assertEquals("folder", entry3.getName());
+        List<String> violations3 = entry3.getViolations();
+        Assertions.assertEquals(0, violations3.size());
     }
 
     @Test
