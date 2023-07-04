@@ -1,4 +1,12 @@
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id 'jvm-test-suite'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 
 repositories {
     mavenCentral()
