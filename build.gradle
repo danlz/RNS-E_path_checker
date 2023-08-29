@@ -12,6 +12,13 @@ repositories {
     mavenCentral()
 }
 
+test {
+    testLogging {
+        outputs.upToDateWhen { false }
+        showStandardStreams = true
+    }
+}
+
 testing {
     suites {
         test {
