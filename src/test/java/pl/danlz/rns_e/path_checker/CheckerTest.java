@@ -19,7 +19,7 @@ public class CheckerTest {
         checker.buildEntryList();
         checker.checkNameLength();
 
-        Assertions.assertEquals(17, checker.entries.size());
+        Assertions.assertEquals(18, checker.entries.size());
         Entry entry1 = checker.entries.get(0);
         Assertions.assertEquals("123456789012345678901234567890123456789012345678901234567890Too_long", entry1.getName());
         List<String> violations1 = entry1.getViolations();
