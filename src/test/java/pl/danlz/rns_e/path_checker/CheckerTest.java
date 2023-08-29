@@ -25,14 +25,14 @@ public class CheckerTest {
         List<String> violations1 = entry1.getViolations();
         Assertions.assertEquals(1, violations1.size());
         Assertions.assertEquals("Entry name has 68 characters", violations1.get(0));
-        Entry entry2 = checker.entries.get(1);
-        Assertions.assertEquals("album", entry2.getName());
-        List<String> violations2 = entry2.getViolations();
-        Assertions.assertEquals(0, violations2.size());
         Entry entry3 = checker.entries.get(2);
-        Assertions.assertEquals("folder", entry3.getName());
-        List<String> violations3 = entry3.getViolations();
-        Assertions.assertEquals(0, violations3.size());
+        Assertions.assertEquals("album", entry3.getName());
+        List<String> violations2 = entry3.getViolations();
+        Assertions.assertEquals(0, violations2.size());
+        Entry entry4 = checker.entries.get(3);
+        Assertions.assertEquals("folder", entry4.getName());
+        List<String> violations4 = entry4.getViolations();
+        Assertions.assertEquals(0, violations4.size());
     }
 
     @Test
