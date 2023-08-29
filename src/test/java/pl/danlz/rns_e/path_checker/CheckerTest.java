@@ -27,18 +27,18 @@ public class CheckerTest {
         Assertions.assertEquals(1, violations1.size());
         Assertions.assertEquals("Entry name has 68 characters", violations1.get(0));
         Entry entry3 = checker.entries.get(2);
-        Assertions.assertEquals("album", entry3.getName());
+        Assertions.assertEquals("Album", entry3.getName());
         List<String> violations2 = entry3.getViolations();
         Assertions.assertEquals(0, violations2.size());
         Entry entry4 = checker.entries.get(3);
-        Assertions.assertEquals("folder", entry4.getName());
+        Assertions.assertEquals("Folder", entry4.getName());
         List<String> violations4 = entry4.getViolations();
         Assertions.assertEquals(0, violations4.size());
     }
 
     @Test
     void checkNameLength_Valid() {
-        Entry entry = createEntry("album/other file.txt");
+        Entry entry = createEntry("Album/other file.txt");
         String result = Checker.Checks.nameLength(entry);
 
         Assertions.assertNull(result);
@@ -54,7 +54,7 @@ public class CheckerTest {
 
     @Test
     void checkCharacters_Valid() {
-        Entry entry = createEntry("album/other file.txt");
+        Entry entry = createEntry("Album/other file.txt");
         String result = Checker.Checks.characters(entry);
 
         Assertions.assertNull(result);
@@ -62,7 +62,7 @@ public class CheckerTest {
 
     @Test
     void checkCharacters_Invalid() {
-        Entry entry = createEntry("album/invalid characters ół.txt");
+        Entry entry = createEntry("Album/invalid characters ół.txt");
         String result = Checker.Checks.characters(entry);
 
         Assertions.assertEquals("Invalid characters in name", result);
@@ -86,7 +86,7 @@ public class CheckerTest {
 
     @Test
     void checkAlbumName_Invalid() {
-        Entry entry = createEntry("album");
+        Entry entry = createEntry("Album");
         String result = Checker.Checks.albumName(entry);
 
         Assertions.assertEquals("Invalid album name", result);

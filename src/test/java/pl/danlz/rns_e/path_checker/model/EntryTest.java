@@ -15,7 +15,7 @@ public class EntryTest {
 
     @Test
     void isDirectory() {
-        Entry entry = createEntry("album/folder");
+        Entry entry = createEntry("Album/Folder");
 
         Assertions.assertTrue(entry.isDirectory());
     }
@@ -71,21 +71,21 @@ public class EntryTest {
 
     @Test
     void getNameLength() {
-        Entry entry = createEntry("album/other file.txt");
+        Entry entry = createEntry("Album/other file.txt");
 
         Assertions.assertEquals(14, entry.getNameLength());
     }
 
     @Test
     void getName() {
-        Entry entry = createEntry("album/other file.txt");
+        Entry entry = createEntry("Album/other file.txt");
 
         Assertions.assertEquals("other file.txt", entry.getName());
     }
 
     @Test
     void getPath() {
-        File file = new File(basePath, "album/other file.txt");
+        File file = new File(basePath, "Album/other file.txt");
         Entry entry = new Entry(file);
 
         Assertions.assertEquals(file, entry.getPath());
