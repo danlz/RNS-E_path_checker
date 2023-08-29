@@ -18,6 +18,7 @@ public class CheckerTest {
         Checker checker = new Checker(basePath);
         checker.buildEntryList();
         checker.checkNameLength();
+        checker.printEntries();
 
         Assertions.assertEquals(18, checker.entries.size());
         Entry entry1 = checker.entries.get(0);
