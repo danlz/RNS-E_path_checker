@@ -26,3 +26,9 @@ testing {
         }
     }
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'pl.danlz.rns_e.path_checker.Main'
+    }
+}
