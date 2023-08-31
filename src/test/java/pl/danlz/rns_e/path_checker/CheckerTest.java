@@ -18,22 +18,29 @@ public class CheckerTest {
         Checker checker = new Checker(basePath);
         checker.buildEntryList();
         checker.checkNameLength();
+        checker.checkCharacters();
+        checker.checkAlbumName();
+        checker.checkNamesInAlbum();
         checker.printEntries();
+        checker.printViolations();
 
         Assertions.assertEquals(18, checker.entries.size());
         Entry entry1 = checker.entries.get(0);
         Assertions.assertEquals("123456789012345678901234567890123456789012345678901234567890Too_long", entry1.getName());
         List<String> violations1 = entry1.getViolations();
-        Assertions.assertEquals(1, violations1.size());
+        Assertions.assertEquals(2, violations1.size());
         Assertions.assertEquals("Entry name has 68 characters", violations1.get(0));
+        Assertions.assertEquals("Invalid album name", violations1.get(1));
         Entry entry3 = checker.entries.get(2);
         Assertions.assertEquals("Album", entry3.getName());
         List<String> violations2 = entry3.getViolations();
-        Assertions.assertEquals(0, violations2.size());
+        Assertions.assertEquals(1, violations2.size());
+        Assertions.assertEquals("Invalid album name", violations2.get(0));
         Entry entry4 = checker.entries.get(3);
         Assertions.assertEquals("Folder", entry4.getName());
         List<String> violations4 = entry4.getViolations();
-        Assertions.assertEquals(0, violations4.size());
+        Assertions.assertEquals(1, violations4.size());
+        Assertions.assertEquals("Invalid album name", violations4.get(0));
     }
 
     @Test
